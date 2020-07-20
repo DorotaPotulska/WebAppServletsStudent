@@ -15,7 +15,8 @@ import java.util.List;
 
 @WebServlet("/student")
 public class StudentAddController extends HttpServlet {
-    private final EntityDao<Student> studentEntityDao=new EntityDao<>();
+    private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // tutaj ładujemy formularz i wyświetlamy go użytkownikowi
@@ -24,8 +25,7 @@ public class StudentAddController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        String index = req.getParameter("index");
+        String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String average = req.getParameter("average");
@@ -40,17 +40,6 @@ public class StudentAddController extends HttpServlet {
                 .gender(Gender.valueOf(gender))
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
-
-/*        Object studentListObject = req.getSession().getAttribute("student_list");
-        List<Student> studentList;
-        if (studentListObject instanceof List) {
-            studentList = (List<Student>) studentListObject;
-        } else {
-            studentList = new ArrayList<>();
-        }
-
-        studentList.add(student);
-        req.getSession().setAttribute("student_list", studentList);*/
 
         studentEntityDao.saveOrUpdate(student);
 

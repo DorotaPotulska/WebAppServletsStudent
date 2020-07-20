@@ -14,17 +14,10 @@ import java.util.List;
 
 @WebServlet("/students")
 public class StudentListController extends HttpServlet {
-    private final EntityDao<Student> studentEntityDao=new EntityDao<>();
+    private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-     /*   Object studentListObject = req.getSession().getAttribute("student_list");
-        List<Student> studentList;
-        if (studentListObject instanceof List) {
-            studentList = (List<Student>) studentListObject;
-        } else {
-            studentList = new ArrayList<>();
-        }*/
-
         List<Student> studentList = studentEntityDao.findAll(Student.class);
         req.setAttribute("studentList", studentList);
 

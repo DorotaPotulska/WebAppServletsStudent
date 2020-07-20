@@ -9,11 +9,13 @@ public class HibernateUtil {
         try {
             Configuration configuration = new Configuration();
             configuration.configure("/hibernate.cfg.xml");
+
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
     }
+
     public static SessionFactory getSessionFactory() {
         return ourSessionFactory;
     }

@@ -16,11 +16,13 @@ import java.util.Optional;
 @WebServlet("/students/delete")
 public class StudentDeleteController extends HttpServlet {
     private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // localhost:8080/studentDeleteHandler.jsp?studentId=5
         // usunięcie studenta z numerem indeksu 5
         String studentId = req.getParameter("studentId");
+
         Optional<Student> studentOptional = studentEntityDao.findById(Long.parseLong(studentId), Student.class);
         if(studentOptional.isPresent()) {
             Student student = studentOptional.get();
@@ -29,7 +31,9 @@ public class StudentDeleteController extends HttpServlet {
         }else{
             System.out.println("Does not exist!");
         }
+
         resp.sendRedirect("/students");
+
     }
 }
 

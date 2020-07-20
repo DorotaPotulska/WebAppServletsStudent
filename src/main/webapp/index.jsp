@@ -17,6 +17,6 @@
 <%--<%--%>
 <%--    out.print(request.getAttribute("imie_do_wyswietlenia"));--%>
 <%--%>--%>
-<h1>Cześć ! <c:out value="${requestScope.imie_do_wyswietlenia}"/></h1>
+<h1>Cześć ! <c:out value="${requestScope.imie_do_wyswietlenia}"/></h1>
 </body>
 </html>
