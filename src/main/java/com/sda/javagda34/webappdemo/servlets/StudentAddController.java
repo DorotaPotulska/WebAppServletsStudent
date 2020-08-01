@@ -20,6 +20,7 @@ public class StudentAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // tutaj ładujemy formularz i wyświetlamy go użytkownikowi
+//        req.getRequestDispatcher("/studentForm.jsp").forward(req, resp);
         req.getRequestDispatcher("/studentForm.jsp").forward(req, resp);
     }
 
@@ -43,6 +44,7 @@ public class StudentAddController extends HttpServlet {
 
         studentEntityDao.saveOrUpdate(student);
 
-        resp.sendRedirect("/students");
+//        resp.sendRedirect("/students");
+        resp.sendRedirect(req.getContextPath() + "/students");
     }
 }

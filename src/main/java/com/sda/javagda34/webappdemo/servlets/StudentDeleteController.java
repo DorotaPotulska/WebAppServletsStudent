@@ -32,7 +32,8 @@ public class StudentDeleteController extends HttpServlet {
             System.out.println("Does not exist!");
         }
 
-        resp.sendRedirect("/students");
+//        resp.sendRedirect("/students");
+        resp.sendRedirect(req.getContextPath() + "/students");
 
     }
 }

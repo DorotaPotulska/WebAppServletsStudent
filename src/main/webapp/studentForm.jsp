@@ -14,7 +14,7 @@
 </head>
 <body>
 <jsp:include page="/navigator.jsp"/>
-<form action="${requestScope.student_to_edit==null ?'/student' : '/students/edit'}" method="post">
+<form action="${pageContext.request.contextPath}${requestScope.student_to_edit==null ? "/student" : "/students/edit"}" method="post">
     <input contenteditable="false" type="hidden" name="id" value="${requestScope.student_to_edit.id}">
 
     <label for="studentIndex">Index:</label>
