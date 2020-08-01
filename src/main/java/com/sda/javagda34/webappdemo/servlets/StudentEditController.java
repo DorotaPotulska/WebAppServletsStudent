@@ -34,27 +34,25 @@ public class StudentEditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
+        Long id = Long.valueOf(req.getParameter("id"));
         String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        //String average = req.getParameter("average");
+//        String average = req.getParameter("average");
         String gender = req.getParameter("gender");
         String active = req.getParameter("active");
 
         Student student = Student.builder()
-                .id(Long.valueOf(id))
+                .id(id)
                 .indexNumber(index)
                 .firstName(firstName)
                 .lastName(lastName)
-                //.average(Double.parseDouble(average))
+//                .average(Double.parseDouble(average))
                 .gender(Gender.valueOf(gender))
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
 
         studentEntityDao.saveOrUpdate(student);
-
-//        resp.sendRedirect("/students");
 
         resp.sendRedirect(req.getContextPath() + "/students");
     }
