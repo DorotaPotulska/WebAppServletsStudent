@@ -2,8 +2,11 @@ package com.sda.javagda34.webappdemo.model;
 
 
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 //POJO
@@ -11,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Builder
-@EqualsAndHashCode(of = {"indexNumber"})
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 // POJO - Plain Old Java Object
@@ -27,12 +30,17 @@ public class Student {
     private String indexNumber; //unikalny
     private String firstName;
     private String lastName;
+    @Formula(value ="(select avg(g.value) from Grade g where g.student_id=id)")
     private Double average;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private boolean active;
+
+    @OneToMany(mappedBy = "student", fetch=FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    private Set<Grade> gradeSet = new HashSet<>();
 
 }
 

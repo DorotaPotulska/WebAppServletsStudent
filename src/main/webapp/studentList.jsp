@@ -22,25 +22,23 @@
         <th>Index</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Average</th>
-        <th>Gender</th>
-        <th>Is Active</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Details</th>
     </tr>
     <c:forEach var="student" items="${requestScope.studentList}">
         <tr>
             <td>${student.indexNumber}</td>
             <td>${student.firstName}</td>
             <td>${student.lastName}</td>
-            <td>${student.average}</td>
-            <td>${student.gender}</td>
-            <td>${student.active}</td>
             <td>
                 <a href="${pageContext.request.contextPath}/students/edit?studentId=<c:out value="${student.id}"/>">Edit</a>
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/students/delete?studentId=<c:out value="${student.id}"/>">Delete</a>
+            </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/student/details?studentId=<c:out value="${student.id}"/>">Details</a>
             </td>
         </tr>
     </c:forEach>

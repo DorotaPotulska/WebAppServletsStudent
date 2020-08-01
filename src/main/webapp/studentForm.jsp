@@ -14,6 +14,7 @@
 </head>
 <body>
 <jsp:include page="/navigator.jsp"/>
+
 <form action="${pageContext.request.contextPath}${requestScope.student_to_edit==null ? "/student" : "/students/edit"}" method="post">
     <input contenteditable="false" type="hidden" name="id" value="${requestScope.student_to_edit.id}">
 
@@ -28,8 +29,8 @@
     <label for="lastName">Last name:</label>
     <input id="lastName" name="lastName" value="${requestScope.student_to_edit.lastName}" type="text"><br/>
 
-    <label for="average">Average: </label>
-    <input id="average" name="average" type="number" value="${requestScope.student_to_edit.average}" step="0.01"><br/>
+    <%--    <label for="average">Average: </label>--%>
+    <%--    <input id="average" name="average" type="number" value="${requestScope.student_to_edit.average}" step="0.01"><br/>--%>
 
     <label for="gender">Gender:</label>
     <select name="gender" id="gender">
